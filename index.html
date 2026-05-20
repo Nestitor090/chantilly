@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chantilly & Co. | Repostería Artesanal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+    /* --- CONFIGURACIÓN GLOBAL --- */
+    :root {
+        --crema-fondo: #fcf8f5;
+        --cafe-oscuro: #5d4037;
+        --fresa-accent: #d81b60;
+        --blanco-puro: #ffffff;
+        --golden: #caf335;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }   
+
+    body {
+        background-color: var(--crema-fondo);
+        font-family: 'Poppins', sans-serif;
+        color: var(--cafe-oscuro);
+    }
+
+    .reposteria-font { font-family: 'Great Vibes', cursive; }
+
+    /* --- NAVBAR --- */
+    .navbar {
+        background-color: var(--blanco-puro);
+        border-bottom: 1px solid #eee;
+        padding: 0.8rem 2rem;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        color: var(--cafe-oscuro) !important;
+        margin: 0 10px;
+        position: relative;
+        transition: 0.3s;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0; height: 2px;
+        bottom: 0; left: 0;
+        background-color: var(--fresa-accent);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: var(--fresa-accent) !important; }
+
+    /* --- SECCIONES --- */
+    section { padding: 80px 0; }
+
+    .hero {
+        height: 90vh;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                    url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .beneficio-icon {
+        width: 70px;
+        height: 70px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        color: var(--fresa-accent);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    /* ESTILO PARA LOS ICONOS DE LUCIDE (IMPORTANTE) */
+    .beneficio-icon svg, .social-glass svg, .footer-info-item svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 2;
+    }
+
+    .testimonial-card {
+        background: white;
+        padding: 30px;
+        border-left: 4px solid var(--fresa-accent);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .cta-final {
+        background: var(--fresa-accent);
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+    }
+
+    .card-custom {
+        border-radius: 0; border: none;
+        transition: transform 0.3s;
+        background: white;
+        height: 100%;
+    }
+    .card-custom:hover { transform: translateY(-10px); }
+    .card-img-top { border-radius: 0; height: 280px; object-fit: cover; }
+
+    .btn-chantilly {
+        background: white;
+        border: none;
+        color: var(--fresa-accent);
+        font-weight: 600;
+        padding: 12px 30px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    .btn-chantilly:hover {
+        background: var(--cafe-oscuro);
+        color: white;
+    }
+
+    /* --- FOOTER MODERNO --- */
+    .footer-wave {
+        line-height: 0;
+        margin-bottom: -1px;
+    }
+
+    .footer-wave svg {
+        fill: var(--cafe-oscuro);
+    }
+
+    footer {
+        background-color: var(--cafe-oscuro);
+        color: #e0d4d0;
+        padding: 60px 0 20px;
+        position: relative;
+    }
+
+    .footer-brand {
+        color: var(--blanco-puro);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-link-modern {
+        color: #bfa8a3;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .footer-link-modern:hover { color: var(--fresa-accent); }
+
+    .social-glass {
+        width: 45px;
+        height: 45px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .social-glass:hover {
+        background: var(--fresa-accent);
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(216, 27, 96, 0.3);
+    }
+
+    .footer-info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 991px) {
+        .footer-info-item { justify-content: center; }
+    }
+
+/* Estilo para el texto fresa */
+.text-fresa {
+    color: var(--fresa-accent);
+}
+
+/* Efecto de mano al pasar por la tarjeta */
+.card-custom[role="button"] {
+    cursor: pointer;
+}
+
+/* Ajuste para el título del modal */
+.modal-content .reposteria-font {
+    color: var(--cafe-oscuro);
+}
+
+.modal-header .btn-close {
+    filter: brightness(0.5); /* Hace la X más visible */
+}
+
+@media (min-width: 768px) {
+    .footer-info-item { justify-content: flex-start; }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand reposteria-font fs-1" href="#" style="color: var(--cafe-oscuro);">Chantilly & Co.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#beneficios">¿Por qué nosotros?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Favoritos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Opiniones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">El Local</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#contacto" class="btn btn-dark rounded-0 px-4">Pedir Ahora</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="reposteria-font display-1 mb-4">Dulzura en cada bocado</h1>
+            <p class="lead mb-5 fs-4">Repostería artesanal horneada hoy, directa a tu corazón.</p>
+            <a href="#productos" class="btn-chantilly">VER LA CARTA</a>
+        </div>
+    </header>
+<section id="beneficios" class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="beneficio-icon"><i class="fas fa-utensils"></i></div>
+                <h4>Ingredientes Premium</h4>
+                <p class="text-muted">Usamos chocolate al 70% cacao y frutas frescas de estación.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="beneficio-icon"><i class="fas fa-truck"></i></div>
+                <h4>Envío Seguro</h4>
+                <p class="text-muted">Tus postres llegan impecables gracias a nuestro empaque especial.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="beneficio-icon"><i class="fas fa-clock"></i></div>
+                <h4>Siempre Fresco</h4>
+                <p class="text-muted">No usamos conservantes. Horneamos cada mañana bajo pedido.</p>
+            </div>
+        </div>
+    </section>
+
+<section id="productos" class="bg-white">
+    <div class="container">
+        <h2 class="reposteria-font text-center display-3 mb-5">Nuestras Especialidades</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-custom shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalChocolate">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Tortas de Chocolate">
+                    <div class="card-body text-center p-4">
+                        <h3 class="reposteria-font h2">Línea Chocolate</h3>
+                        <p class="text-muted small">Explora nuestras variedades de cacao intenso.</p>
+                        <span class="text-fresa fw-bold">Ver opciones →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-custom shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalVainilla">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Tortas de Vainilla">
+                    <div class="card-body text-center p-4">
+                        <h3 class="reposteria-font h2">Frutos & Vainilla</h3>
+                        <p class="text-muted small">Combinaciones frescas y bizcochos ligeros.</p>
+                        <span class="text-fresa fw-bold">Ver opciones →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-custom shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalExtras">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Extras">
+                    <div class="card-body text-center p-4">
+                        <h3 class="reposteria-font h2">Extras & Más</h3>
+                        <p class="text-muted small">Cupcakes, galletas y bocaditos artesanales.</p>
+                        <span class="text-fresa fw-bold">Ver opciones →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalChocolate" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-0 rounded-0">
+            <div class="modal-header border-0 pb-0">
+                <h3 class="reposteria-font display-4 mb-0">Línea Chocolate</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-4">
+                    
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Chocolate Fudge Clásico</h6>
+                                <p class="text-muted small mb-1">Bizcocho de chocolate relleno de abundante fudge artesanal.</p>
+                                <span class="text-fresa fw-bold">S/ 45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Selva Negra Premium</h6>
+                                <p class="text-muted small mb-1">Capas de chocolate, crema chantilly y cerezas marrasquino.</p>
+                                <span class="text-fresa fw-bold">S/ 50.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1590080875852-ba44f83ff2db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91c2UlMjBkZSUyMGNob2NvbGF0ZXxlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Mousse de Chocolate 70%</h6>
+                                <p class="text-muted small mb-1">Textura ligera y aireada con cacao puro de exportación.</p>
+                                <span class="text-fresa fw-bold">S/ 55.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Tentación de Choco-Menta</h6>
+                                <p class="text-muted small mb-1">Bizcocho oscuro con crema de menta fresca y ganache.</p>
+                                <span class="text-fresa fw-bold">S/ 48.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1639158924965-7be3bb57506b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dHJ1ZmF0byUyMGNob2NvbGF0ZXxlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Trufado Bitter</h6>
+                                <p class="text-muted small mb-1">Para paladares exigentes, relleno de trufa de chocolate amargo.</p>
+                                <span class="text-fresa fw-bold">S/ 60.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://media.istockphoto.com/id/488975483/es/foto/pasta-naranja.webp?a=1&b=1&s=612x612&w=0&k=20&c=eWI0EKPVGc0H1feDRJ-jHdkcjmTuoZw0HIEpdiir58I=" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Chocolate & Naranja</h6>
+                                <p class="text-muted small mb-1">Toque cítrico con ralladura de naranja y chocolate de leche.</p>
+                                <span class="text-fresa fw-bold">S/ 45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1715015439764-1e8d37d5c6c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG9ydGElMjBkZSUyMGNob2NvbGF0ZXxlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Tres Leches de Cacao</h6>
+                                <p class="text-muted small mb-1">Nuestra versión bañada en tres leches con cacao orgánico.</p>
+                                <span class="text-fresa fw-bold">S/ 52.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1626263468007-a9e0cf83f1ac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Choco-Manjar Especial</h6>
+                                <p class="text-muted small mb-1">Relleno de manjar blanco de olla y cobertura de fudge.</p>
+                                <span class="text-fresa fw-bold">S/ 42.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1713274785893-8879f807aff6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG9ydGElMjBkZSUyMGF2ZWxsYW5hc3xlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Torta Nutella & Avellanas</h6>
+                                <p class="text-muted small mb-1">Crujiente de avellanas con crema de chocolate y avellana.</p>
+                                <span class="text-fresa fw-bold">S/ 65.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Marquise de Chocolate (Sin Harina)</h6>
+                                <p class="text-muted small mb-1">Base húmeda y densa, servida con frutos del bosque.</p>
+                                <span class="text-fresa fw-bold">S/ 58.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/51924488934" class="btn btn-dark rounded-0 w-100 py-3 fw-bold">PEDIR POR WHATSAPP</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalVainilla" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-0 rounded-0">
+            <div class="modal-header border-0 pb-0">
+                <h3 class="reposteria-font display-4 mb-0">Frutos & Vainilla</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-4">
+                    
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Vainilla Francesa Clásica</h6>
+                                <p class="text-muted small mb-1">Bizcocho aireado con esencia de vainilla en rama y crema ligera.</p>
+                                <span class="text-fresa fw-bold">S/ 40.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1713920189815-876dbdf5f56e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UmVkJTIwVmVsdmV0JTIwRXNwZWNpYWx8ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Red Velvet Especial</h6>
+                                <p class="text-muted small mb-1">El clásico color carmesí con frosting de queso crema premium.</p>
+                                <span class="text-fresa fw-bold">S/ 50.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1654546518361-eef83e447521?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Tres Leches Tradicional</h6>
+                                <p class="text-muted small mb-1">Bañada en nuestra mezcla secreta de tres leches y canela.</p>
+                                <span class="text-fresa fw-bold">S/ 45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1611293388250-580b08c4a145?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmFpbmlsbGElMjB5JTIwZnJlc2FzJTIwdG9ydGF8ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Vainilla & Fresas Silvestres</h6>
+                                <p class="text-muted small mb-1">Relleno de mermelada artesanal y fresas frescas de estación.</p>
+                                <span class="text-fresa fw-bold">S/ 48.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1692878409148-3efc77791cce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ymx1ZSUyMGJlcnJ5JTIwZHJlYW18ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Blueberry Dream</h6>
+                                <p class="text-muted small mb-1">Bizcocho de vainilla con arándanos enteros y un toque cítrico.</p>
+                                <span class="text-fresa fw-bold">S/ 52.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Limón & Poppy Seeds</h6>
+                                <p class="text-muted small mb-1">Refrescante sabor a limón real con textura de amapola.</p>
+                                <span class="text-fresa fw-bold">S/ 42.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1714662416175-f6a05a83fbe7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ydGElMjBkZSUyMHphbmFob3JpYSUyMHklMjBudWVjZXN8ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Zanahoria & Nueces</h6>
+                                <p class="text-muted small mb-1">Bizcocho especiado con pecanas, nueces y frosting suave.</p>
+                                <span class="text-fresa fw-bold">S/ 55.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1713721662826-5506a9667d32?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ydGElMjBkZSUyMG1hcmFjdXlhfGVufDB8fDB8fHww" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Exótico Maracuyá</h6>
+                                <p class="text-muted small mb-1">Equilibrio perfecto entre el ácido del maracuyá y el dulce.</p>
+                                <span class="text-fresa fw-bold">S/ 48.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1690267599089-bcff55a36c2f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG9ydGElMjBkdXJhem5vcyUyMGVuJTIwYWxtaWJhcnxlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Duraznos en Almíbar</h6>
+                                <p class="text-muted small mb-1">Capas de bizcocho húmedo, duraznos tiernos y chantilly.</p>
+                                <span class="text-fresa fw-bold">S/ 45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1666672952928-870c6ef85e0d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9zdHJlJTIwY29jbyUyMHJhbGxhZG8lMjB5JTIwbGVjaGUlMjBkZSUyMGNvY298ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Coco Rallado & Leche de Coco</h6>
+                                <p class="text-muted small mb-1">Para los amantes del coco, una textura húmeda y aromática.</p>
+                                <span class="text-fresa fw-bold">S/ 43.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/51924488934" class="btn btn-dark rounded-0 w-100 py-3 fw-bold">PEDIR POR WHATSAPP</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalExtras" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-0 rounded-0">
+            <div class="modal-header border-0 pb-0">
+                <h3 class="reposteria-font display-4 mb-0">Extras & Más</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-4">
+                    
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1761751361544-33eeb10a624d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UGFjayUyMHg2JTIwQ3VwY2FrZXMlMjBSZWQlMjBWZWx2ZXR8ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Pack x6 Cupcakes Red Velvet</h6>
+                                <p class="text-muted small mb-1">Mini delicias con el clásico frosting de queso crema.</p>
+                                <span class="text-fresa fw-bold">S/ 35.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1529800762245-2edb94c697f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2hvY29jaGlwJTIwQ29va2llc3xlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Chocochip Cookies (Docena)</h6>
+                                <p class="text-muted small mb-1">Crujientes por fuera, melcochudas por dentro con chocolate al 70%.</p>
+                                <span class="text-fresa fw-bold">S/ 25.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1775486094052-c161dc64bd53?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fENhamElMjBkZSUyMEJyb3duaWVzfGVufDB8fDB8fHww" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Caja de Brownies x4</h6>
+                                <p class="text-muted small mb-1">Cacao puro y trozos de nueces. Súper intensos.</p>
+                                <span class="text-fresa fw-bold">S/ 28.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Macarons Franceses x6</h6>
+                                <p class="text-muted small mb-1">Sabores: Pistacho, frambuesa, vainilla y limón.</p>
+                                <span class="text-fresa fw-bold">S/ 42.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1604953781841-004f1848ed3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QWxmYWpvcmVzJTIwY2FqYXxlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Alfajores Premium (Docena)</h6>
+                                <p class="text-muted small mb-1">Rellenos de manjar blanco de olla y mucha azúcar fina.</p>
+                                <span class="text-fresa fw-bold">S/ 22.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Muffins de Arándanos x4</h6>
+                                <p class="text-muted small mb-1">Esponjosos y cargados de fruta fresca.</p>
+                                <span class="text-fresa fw-bold">S/ 24.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=200" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Barras de Cheesecake</h6>
+                                <p class="text-muted small mb-1">Cuadrados de cheesecake con coulis de frutos rojos.</p>
+                                <span class="text-fresa fw-bold">S/ 18.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1639428133941-6fb87334e529?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8VHJ1ZmFzJTIwZGUlMjBDYWNhb3xlbnwwfHwwfHx8MA%3D%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Trufas de Cacao x8</h6>
+                                <p class="text-muted small mb-1">Bañadas en lluvia de chocolate y coco rallado.</p>
+                                <span class="text-fresa fw-bold">S/ 30.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 border-bottom pb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1667113227378-f4fe9f7cd468?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RW1wYW5hZGFzJTIwZGUlMjBNYW56YW5hfGVufDB8fDB8fHww" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Empanadas de Manzana x4</h6>
+                                <p class="text-muted small mb-1">Masa hojaldrada rellena de manzana y canela.</p>
+                                <span class="text-fresa fw-bold">S/ 20.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1693941072714-5a4f24d05223?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Q2FrZSUyMFBvcHMlMjBEZWNvcmFkb3N8ZW58MHx8MHx8fDA%3D" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div class="ms-3">
+                                <h6 class="fw-bold mb-1">Cake Pops Decorados x6</h6>
+                                <p class="text-muted small mb-1">Divertidas paletas de bizcocho cubiertas de chocolate.</p>
+                                <span class="text-fresa fw-bold">S/ 32.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/51924488934" class="btn btn-dark rounded-0 w-100 py-3 fw-bold">PEDIR POR WHATSAPP</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section id="testimonios" class="container">
+        <h2 class="reposteria-font text-center display-4 mb-5">Lo que dicen nuestros clientes</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <p class="fst-italic">"El sabor es increíble. Se nota que usan ingredientes reales. ¡La torta de chocolate es de otro mundo!"</p>
+                    <p class="fw-bold mb-0">— María García</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <p class="fst-italic">"Pedí para el cumpleaños de mi madre y llegó perfecto. El empaque es muy elegante y el trato excelente."</p>
+                    <p class="fw-bold mb-0">— Juan Pérez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" class="img-fluid shadow" alt="Nuestro Local">
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <h2 class="reposteria-font display-4">Nuestra Historia</h2>
+                    <p>En Chantilly & Co. empezamos en una pequeña cocina familiar con un solo sueño: recuperar el sabor de la repostería artesanal sin químicos ni procesos industriales.</p>
+                    <p>Hoy, ese sueño se traduce en cientos de sonrisas de clientes que buscan calidad y un trato personalizado en cada pedido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2 class="reposteria-font display-2 mb-4">¡No te quedes con el antojo!</h2>
+            <p class="mb-5 fs-5 text-white-50">Haz tu pedido hoy y recíbelo fresco en tu puerta.</p>
+            <a href="https://wa.me/51924488934" class="btn btn-light btn-lg rounded-0 px-5 fw-bold py-3">PEDIR POR WHATSAPP <i data-lucide="message-circle" class="ms-2"></i></a>
+        </div>
+    </section>
+
+    <div class="footer-wave">
+    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+    </svg>
+</div>
+
+<footer id="contacto">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <h2 class="reposteria-font footer-brand">Chantilly & Co.</h2>
+                    <p class="pe-lg-5">Llevamos el arte de la repostería tradicional a tu mesa. Dulzura real para momentos especiales.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
+                        <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-glass"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center text-lg-start">
+                    <h5 class="text-white fw-bold mb-4">Navegación</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#beneficios" class="footer-link-modern d-block mb-2">¿Por qué nosotros?</a></li>
+                        <li><a href="#productos" class="footer-link-modern d-block mb-2">Nuestros Postres</a></li>
+                        <li><a href="#nosotros" class="footer-link-modern d-block mb-2">Nuestro Local</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-12 text-center text-lg-start">
+                    <h5 class="text-white fw-bold mb-4">Encuéntranos</h5>
+                    <div class="footer-info-item">
+                        <i class="fas fa-map-marker-alt" style="color: var(--fresa-accent)"></i>
+                        <span>Av. Dulzura 123, San Juan de Miraflores</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <i class="fas fa-phone" style="color: var(--fresa-accent)"></i>
+                        <span>+51 987 654 321</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <i class="fas fa-envelope" style="color: var(--fresa-accent)"></i>
+                        <span>hola@chantilly.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5 opacity-10">
+            
+            <div class="row align-items-center text-center">
+                <div class="col-md-6 text-md-start mb-3 mb-md-0">
+                    <p class="small mb-0 text-secondary">© 2026 Chantilly & Co. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0 text-secondary">Hecho con <i class="fas fa-heart" style="color: var(--fresa-accent)"></i> para amantes del dulce.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+   
+</body>
+</html>
