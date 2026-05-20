@@ -1,0 +1,209 @@
+ /* --- CONFIGURACIÓN GLOBAL --- */
+    :root {
+        --crema-fondo: #fcf8f5;
+        --cafe-oscuro: #5d4037;
+        --fresa-accent: #d81b60;
+        --blanco-puro: #ffffff;
+        --golden: #caf335;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }   
+
+    body {
+        background-color: var(--crema-fondo);
+        font-family: 'Poppins', sans-serif;
+        color: var(--cafe-oscuro);
+    }
+
+    .reposteria-font { font-family: 'Great Vibes', cursive; }
+
+    /* --- NAVBAR --- */
+    .navbar {
+        background-color: var(--blanco-puro);
+        border-bottom: 1px solid #eee;
+        padding: 0.8rem 2rem;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        color: var(--cafe-oscuro) !important;
+        margin: 0 10px;
+        position: relative;
+        transition: 0.3s;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0; height: 2px;
+        bottom: 0; left: 0;
+        background-color: var(--fresa-accent);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: var(--fresa-accent) !important; }
+
+    /* --- SECCIONES --- */
+    section { padding: 80px 0; }
+
+    .hero {
+        height: 90vh;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                    url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .beneficio-icon {
+        width: 70px;
+        height: 70px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        color: var(--fresa-accent);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    /* ESTILO PARA LOS ICONOS DE LUCIDE (IMPORTANTE) */
+    .beneficio-icon svg, .social-glass svg, .footer-info-item svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 2;
+    }
+
+    .testimonial-card {
+        background: white;
+        padding: 30px;
+        border-left: 4px solid var(--fresa-accent);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .cta-final {
+        background: var(--fresa-accent);
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+    }
+
+    .card-custom {
+        border-radius: 0; border: none;
+        transition: transform 0.3s;
+        background: white;
+        height: 100%;
+    }
+    .card-custom:hover { transform: translateY(-10px); }
+    .card-img-top { border-radius: 0; height: 280px; object-fit: cover; }
+
+    .btn-chantilly {
+        background: white;
+        border: none;
+        color: var(--fresa-accent);
+        font-weight: 600;
+        padding: 12px 30px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    .btn-chantilly:hover {
+        background: var(--cafe-oscuro);
+        color: white;
+    }
+
+    /* --- FOOTER MODERNO --- */
+    .footer-wave {
+        line-height: 0;
+        margin-bottom: -1px;
+    }
+
+    .footer-wave svg {
+        fill: var(--cafe-oscuro);
+    }
+
+    footer {
+        background-color: var(--cafe-oscuro);
+        color: #e0d4d0;
+        padding: 60px 0 20px;
+        position: relative;
+    }
+
+    .footer-brand {
+        color: var(--blanco-puro);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-link-modern {
+        color: #bfa8a3;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .footer-link-modern:hover { color: var(--fresa-accent); }
+
+    .social-glass {
+        width: 45px;
+        height: 45px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .social-glass:hover {
+        background: var(--fresa-accent);
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(216, 27, 96, 0.3);
+    }
+
+    .footer-info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 991px) {
+        .footer-info-item { justify-content: center; }
+    }
+
+/* Estilo para el texto fresa */
+.text-fresa {
+    color: var(--fresa-accent);
+}
+
+/* Efecto de mano al pasar por la tarjeta */
+.card-custom[role="button"] {
+    cursor: pointer;
+}
+
+/* Ajuste para el título del modal */
+.modal-content .reposteria-font {
+    color: var(--cafe-oscuro);
+}
+
+.modal-header .btn-close {
+    filter: brightness(0.5); /* Hace la X más visible */
+}
+
+@media (min-width: 768px) {
+    .footer-info-item { justify-content: flex-start; }
+}
