@@ -18,11 +18,11 @@
     }   
 
     body {
-        background-color: var(--pagina-fondo);
-        font-family: 'Poppins', sans-serif;
-        color: var(--texto-principal);
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+    background-color: #1e1e2f;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
     .reposteria-font { font-family: 'Great Vibes', cursive; }
 
