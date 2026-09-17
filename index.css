@@ -207,3 +207,7 @@
 @media (min-width: 768px) {
     .footer-info-item { justify-content: flex-start; }
 }
+.btn-dark {
+    background-color: #25D366 !important;
+    border-color: #25D366 !important;
+}
