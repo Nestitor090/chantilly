@@ -136,31 +136,31 @@
     }
 
     .footer-wave svg {
-        fill: var(--cafe-oscuro);
+        fill: var(--fresa-accent);
     }
 
     footer {
-        background-color: var(--cafe-oscuro);
-        color: #e0d4d0;
+        background-color: var(--fresa-accent);
+        color: #ee5c91;
         padding: 60px 0 20px;
         position: relative;
     }
 
     .footer-brand {
-        color: var(--blanco-puro);
+        color: var(--golden);
         font-size: 2.5rem;
         margin-bottom: 1.5rem;
     }
 
     .footer-link-modern {
-        color: #bfa8a3;
+        color: #caf335;
         text-decoration: none;
         transition: 0.3s;
         font-size: 0.9rem;
     }
 
-    .footer-link-modern:hover { color: var(--fresa-accent); }
-
+    .footer-link-modern:hover { color: var(--golden); }
+    
     .social-glass {
         width: 45px;
         height: 45px;
